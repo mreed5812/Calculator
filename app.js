@@ -14,8 +14,32 @@ function divide(x,y){
 	return x % y;
 }
 
-function operate(operator,a,b){
-	//do something with integers and operator (+,-,*,%)
+function operate(operator,x,y){
+	switch(operator){
+		case 'multiply':
+			console.log(multiply(x,y));
+			break;
 
-}
-console.log(add(54,66));
+		case 'add':
+			console.log(add(x,y));
+			break;
+
+		case 'subtract':
+			console.log(subtract(x,y));
+			break;
+
+		case 'divide':
+			console.log(divide(x,y));
+			break;
+	}
+}	
+
+$('.button').on('click', function(event){
+	//get id of event target
+	let eventID = event.target.id;
+
+	//determine what number/operator it is
+	alert(eventID);
+	//add to display
+
+});
