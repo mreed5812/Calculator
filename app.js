@@ -45,6 +45,8 @@ const deleteBtn = document.querySelector("#delete");
 const divideBtn = document.querySelector("#divide");
 
 let var1, var2, operator;
+let result;
+let evaluated;
 
 //^ matches position just before first character of string
 // $ matches position just after last character of string
@@ -57,6 +59,7 @@ function clear(){
 	display.textContent = null;
 	var1 = null;
 	var2 = null;
+	evaluated = false;
 }
 
 deleteBtn.addEventListener('click', function(){
@@ -69,12 +72,16 @@ clearBtn.addEventListener('click', function(){
 
 equalBtn.addEventListener('click', function(){
 	var2 = parseFloat(display.textContent);
-	let result = operate(operator, var1,var2).toFixed(2);
+	result = operate(operator, var1,var2).toFixed(2);
 	display.textContent = result;
+	evaluated = true;
 });
 
 numbers.forEach((button) => {
-	button.addEventListener('click', (e) => {
+	button.addEventListener('click', (event) => {
+		if(evaluated){
+			clear();
+		}
 		if (display.textContent == '0') {
 			display.textContent = button.textContent;
 		} else if (numCheck.test(display.textContent)) {
