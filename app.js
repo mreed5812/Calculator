@@ -72,7 +72,11 @@ clearBtn.addEventListener('click', function(){
 
 equalBtn.addEventListener('click', function(){
 	var2 = parseFloat(display.textContent);
-	result = operate(operator, var1,var2).toFixed(2);
+	if(var2 == 0 && operator == 'divide'){
+		result = "Invalid";
+	} else{
+		result = operate(operator, var1,var2).toFixed(2);
+	}
 	display.textContent = result;
 	evaluated = true;
 });
